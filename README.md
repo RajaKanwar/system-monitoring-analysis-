@@ -134,8 +134,11 @@ if __name__ == "__main__":
     analyze_data(df)
 ```
 
-### **Run the Python Script:**
+### **Run the Python Script: on Virtual Environment**
 ```bash
+python3 -m venv myenv
+source myenv/bin/activate
+pip install paramiko pandas
 python3 analyze_data.py
 ```
 
