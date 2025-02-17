@@ -1,0 +1,31 @@
+---
+- name: Deploy Monitoring Script
+  hosts: remote
+  become: yes
+  tasks:
+    - name: Copy script to remote server
+      copy:
+        src: monitor.sh
+        dest: /usr/local/bin/monitor.sh
+        mode: '0755'
+
+    - name: Create systemd service for script
+      copy:
+        dest: /etc/systemd/system/monitor.service
+        content: |
+          [Unit]
+          Description=CPU & Memory Monitor
+          After=network.target
+
+          [Service]
+          ExecStart=/usr/local/bin/monitor.sh
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+
+    - name: Reload systemd and enable service
+      shell: |
+        systemctl daemon-reload
+        systemctl enable --now monitor.service
+
