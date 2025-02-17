@@ -150,10 +150,4 @@ python3 analyze_data.py
 ## **Conclusion**
 This project automates system performance monitoring on an EC2 instance using a shell script, Ansible for deployment, and Python for analysis. It helps track system resource usage effectively.
 
----
-
-### **Author**
-Your Name
-
----
 
